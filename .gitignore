@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+dist/
+build/
+.env
+.idea/
+.vscode/
+*.log
+
+# Project Documentation / AI Instructions
+SKILL.md
+blueprint.md

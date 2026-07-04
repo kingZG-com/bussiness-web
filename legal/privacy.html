@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | SantriCode.Labs</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Output) -->
+    <link href="../src/output.css" rel="stylesheet">
+    <!-- FontAwesome Local -->
+    <link href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    
+    <!-- Initial Theme Setup (to prevent FOUC) -->
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="bg-bg-primary text-text-main font-sans antialiased selection:bg-soft-cyan selection:text-white transition-colors duration-300">
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <main class="pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen">
+        <h1 class="font-display font-bold text-4xl mb-8 text-text-main">Kebijakan Privasi</h1>
+        <div class="prose prose-lg dark:prose-invert text-text-muted">
+            <p class="mb-4">Terakhir diperbarui: 5 Juli 2026</p>
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-text-main">1. Informasi yang Kami Kumpulkan</h2>
+            <p class="mb-4">Kami hanya mengumpulkan informasi yang Anda berikan secara langsung saat menggunakan formulir kontak, konsultasi via WhatsApp, atau saat bekerja sama dalam pengembangan proyek. Informasi ini mencakup nama, kontak, dan detail proyek.</p>
+            
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-text-main">2. Penggunaan Informasi</h2>
+            <p class="mb-4">Informasi yang dikumpulkan digunakan semata-mata untuk tujuan: (a) Berkomunikasi terkait proyek; (b) Menyelesaikan tugas/pengembangan yang disepakati; (c) Meningkatkan kualitas layanan kami. Kami sangat menjaga kerahasiaan tugas IT/akademis klien.</p>
+
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-text-main">3. Perlindungan Data (Joki IT & Project)</h2>
+            <p class="mb-4">Keamanan dan privasi klien adalah prioritas utama. Semua source code, ide bisnis, maupun dokumen akademik yang diberikan kepada SantriCode.Labs tidak akan dipublikasikan atau dijual ke pihak ketiga.</p>
+        </div>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Logic Script -->
+    <script>
+        async function loadComponents() {
+            try {
+                const navRes = await fetch('../components/navbar.html');
+                if(navRes.ok) {
+                    let navHtml = await navRes.text();
+                    // Fix relative paths for legal folder
+                    navHtml = navHtml.replace(/href="#/g, 'href="../index.html#');
+                    document.getElementById('navbar-container').innerHTML = navHtml;
+                }
+                
+                const footerRes = await fetch('../components/footer.html');
+                if(footerRes.ok) {
+                    let footerHtml = await footerRes.text();
+                    // Fix relative paths for footer
+                    footerHtml = footerHtml.replace(/href="#"/g, 'href="../index.html"');
+                    footerHtml = footerHtml.replace(/\.\/legal\//g, './');
+                    document.getElementById('footer-container').innerHTML = footerHtml;
+                }
+                
+                initThemeToggle();
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        }
+
+        function initThemeToggle() {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+            const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+            const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+            const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+
+            if (!themeToggleBtn) return;
+
+            function setIcon(theme) {
+                if (theme === 'dark') {
+                    themeToggleLightIcon.classList.add('hidden');
+                    themeToggleDarkIcon.classList.remove('hidden');
+                    if(themeToggleLightIconMobile) themeToggleLightIconMobile.classList.add('hidden');
+                    if(themeToggleDarkIconMobile) themeToggleDarkIconMobile.classList.remove('hidden');
+                } else {
+                    themeToggleDarkIcon.classList.add('hidden');
+                    themeToggleLightIcon.classList.remove('hidden');
+                    if(themeToggleDarkIconMobile) themeToggleDarkIconMobile.classList.add('hidden');
+                    if(themeToggleLightIconMobile) themeToggleLightIconMobile.classList.remove('hidden');
+                }
+            }
+
+            let currentTheme = localStorage.getItem('color-theme');
+            if (currentTheme === 'dark' || (!currentTheme && document.documentElement.classList.contains('dark'))) {
+                setIcon('dark');
+            } else {
+                setIcon('light');
+            }
+
+            function toggleTheme() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                    setIcon('light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                    setIcon('dark');
+                }
+            }
+
+            themeToggleBtn.addEventListener('click', toggleTheme);
+            if(themeToggleBtnMobile) themeToggleBtnMobile.addEventListener('click', toggleTheme);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadComponents);
+    </script>
+</body>
+</html>

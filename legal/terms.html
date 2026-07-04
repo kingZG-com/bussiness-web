@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | SantriCode.Labs</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Output) -->
+    <link href="../src/output.css" rel="stylesheet">
+    <!-- FontAwesome Local -->
+    <link href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    
+    <!-- Initial Theme Setup (to prevent FOUC) -->
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body class="bg-bg-primary text-text-main font-sans antialiased selection:bg-soft-cyan selection:text-white transition-colors duration-300">
+
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
+
+    <main class="pt-32 pb-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen">
+        <h1 class="font-display font-bold text-4xl mb-8 text-text-main">Syarat & Ketentuan</h1>
+        <div class="prose prose-lg dark:prose-invert text-text-muted">
+            <p class="mb-4">Terakhir diperbarui: 5 Juli 2026</p>
+            
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-text-main">1. Persetujuan Layanan</h2>
+            <p class="mb-4">Dengan menggunakan layanan pengembangan web, aplikasi, maupun bantuan tugas IT (joki IT) dari SantriCode.Labs, Anda secara otomatis menyetujui syarat dan ketentuan ini.</p>
+            
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-text-main">2. Pembayaran dan DP (Down Payment)</h2>
+            <p class="mb-4">Pengerjaan proyek atau tugas baru akan dimulai setelah pembayaran uang muka (DP) minimal 50% dari total nilai proyek diterima. Sisa pembayaran wajib diselesaikan sebelum serah terima final source code atau produk digital.</p>
+
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-text-main">3. Revisi</h2>
+            <p class="mb-4">Layanan kami mencakup revisi minor (seperti penyesuaian teks, warna, margin). Revisi mayor yang merubah struktur arsitektur, mengubah fungsionalitas utama, atau berada di luar scope kesepakatan awal akan dikenakan biaya tambahan.</p>
+
+            <h2 class="text-2xl font-bold mt-8 mb-4 text-text-main">4. Ketentuan Joki IT</h2>
+            <p class="mb-4">Layanan joki tugas IT disediakan secara profesional untuk membantu pemahaman akademis. Segala bentuk tanggung jawab akademis di hadapan dosen/universitas merupakan tanggung jawab penuh dari pihak klien (mahasiswa bersangkutan).</p>
+        </div>
+    </main>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Logic Script -->
+    <script>
+        async function loadComponents() {
+            try {
+                const navRes = await fetch('../components/navbar.html');
+                if(navRes.ok) {
+                    let navHtml = await navRes.text();
+                    // Fix relative paths for legal folder
+                    navHtml = navHtml.replace(/href="#/g, 'href="../index.html#');
+                    document.getElementById('navbar-container').innerHTML = navHtml;
+                }
+                
+                const footerRes = await fetch('../components/footer.html');
+                if(footerRes.ok) {
+                    let footerHtml = await footerRes.text();
+                    // Fix relative paths for footer
+                    footerHtml = footerHtml.replace(/href="#"/g, 'href="../index.html"');
+                    footerHtml = footerHtml.replace(/\.\/legal\//g, './');
+                    document.getElementById('footer-container').innerHTML = footerHtml;
+                }
+                
+                initThemeToggle();
+            } catch (error) {
+                console.error('Error loading components:', error);
+            }
+        }
+
+        function initThemeToggle() {
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+            const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
+            const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
+            const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+
+            if (!themeToggleBtn) return;
+
+            function setIcon(theme) {
+                if (theme === 'dark') {
+                    themeToggleLightIcon.classList.add('hidden');
+                    themeToggleDarkIcon.classList.remove('hidden');
+                    if(themeToggleLightIconMobile) themeToggleLightIconMobile.classList.add('hidden');
+                    if(themeToggleDarkIconMobile) themeToggleDarkIconMobile.classList.remove('hidden');
+                } else {
+                    themeToggleDarkIcon.classList.add('hidden');
+                    themeToggleLightIcon.classList.remove('hidden');
+                    if(themeToggleDarkIconMobile) themeToggleDarkIconMobile.classList.add('hidden');
+                    if(themeToggleLightIconMobile) themeToggleLightIconMobile.classList.remove('hidden');
+                }
+            }
+
+            let currentTheme = localStorage.getItem('color-theme');
+            if (currentTheme === 'dark' || (!currentTheme && document.documentElement.classList.contains('dark'))) {
+                setIcon('dark');
+            } else {
+                setIcon('light');
+            }
+
+            function toggleTheme() {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                    setIcon('light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                    setIcon('dark');
+                }
+            }
+
+            themeToggleBtn.addEventListener('click', toggleTheme);
+            if(themeToggleBtnMobile) themeToggleBtnMobile.addEventListener('click', toggleTheme);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadComponents);
+    </script>
+</body>
+</html>
