@@ -32,12 +32,12 @@
     <div id="navbar-container"></div>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <section id="home" class="relative pt-24 pb-16 lg:pt-20 lg:pb-32 overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 
                 <!-- Terminal Block -->
-                <div class="order-2 lg:order-1 bg-bg-surface border border-border-main rounded-lg p-6 shadow-2xl font-mono text-sm md:text-base h-64 flex flex-col justify-center transition-colors duration-300">
+                <div class="order-2 lg:order-1 bg-bg-surface border border-border-main rounded-lg p-4 md:p-6 shadow-2xl font-mono text-xs md:text-sm lg:text-base h-56 md:h-64 flex flex-col justify-center transition-colors duration-300">
                     <div class="flex items-center space-x-2 mb-4 border-b border-border-main pb-4 transition-colors duration-300">
                         <div class="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
                         <div class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
@@ -51,20 +51,21 @@
 
                 <!-- Text Content -->
                 <div class="order-1 lg:order-2">
-                    <h1 class="font-display font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 text-text-main transition-colors duration-300">
+                    <h1 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 text-text-main transition-colors duration-300">
                         Dari Ide ke Produk Digital &mdash; <br/>
                         <span class="text-soft-cyan">Kami yang Eksekusi.</span>
                     </h1>
-                    <p class="text-text-muted text-lg md:text-xl mb-10 max-w-2xl leading-relaxed transition-colors duration-300">
-                        Jasa web, aplikasi, dan pengerjaan tugas IT untuk mahasiswa & bisnis yang ingin bergerak lebih cepat.
+                    <p class="text-text-muted text-base sm:text-lg md:text-xl mb-10 max-w-2xl leading-relaxed transition-colors duration-300">
+                        Jasa pengembangan <span class="text-soft-cyan font-bold">web, web app, dan mobile app modern</span> yang aman, terpercaya, dan terjangkau. Dapatkan eksekusi proyek bergaransi untuk bantu bisnis Anda bergerak lebih cepat.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 mb-10">
                         <a href="#layanan" class="px-8 py-3 rounded-lg border border-border-main bg-bg-surface hover:bg-border-main text-text-main font-medium transition-colors text-center">Lihat Layanan</a>
-                        <a href="#kontak" class="px-8 py-3 rounded-lg bg-soft-cyan hover:bg-soft-cyan/90 text-white font-medium transition-colors shadow-lg shadow-soft-cyan/20 text-center">Konsultasi Gratis</a>
+                        <button onclick="openWaModal(event)" class="px-8 py-3 rounded-lg bg-soft-cyan hover:bg-soft-cyan/90 text-white font-medium transition-colors shadow-lg shadow-soft-cyan/20 text-center cursor-pointer">Konsultasi Gratis</button>
                     </div>
-                    <div class="flex items-center space-x-6 text-sm text-text-muted font-mono transition-colors duration-300">
-                        <div class="flex items-center"><i class="fa-solid fa-check text-soft-cyan mr-2"></i> Dipercaya 50+ klien</div>
-                        <div class="flex items-center"><i class="fa-solid fa-bolt text-soft-cyan mr-2"></i> Respon &lt; 1 jam</div>
+                    <div class="flex flex-wrap items-center gap-4 sm:gap-6 text-xs sm:text-sm text-text-muted font-mono transition-colors duration-300">
+                        <div class="flex items-center w-full sm:w-auto"><i class="fa-solid fa-check text-soft-cyan mr-2"></i> Dipercaya 50+ klien</div>
+                        <div class="flex items-center w-full sm:w-auto"><i class="fa-solid fa-bolt text-soft-cyan mr-2"></i> Respon &lt; 1 jam</div>
+                        <div class="flex items-center w-full sm:w-auto"><i class="fa-solid fa-shield-halved text-soft-cyan mr-2"></i> Garansi 1-2 Bulan</div>
                     </div>
                 </div>
             </div>
@@ -78,8 +79,8 @@
     <section id="layanan" class="py-20 bg-bg-primary border-t border-border-main transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16">
-                <span class="font-mono text-soft-cyan text-sm tracking-wider uppercase">01 / Services</span>
-                <h2 class="font-display font-bold text-3xl md:text-4xl mt-2 text-text-main transition-colors duration-300">Apa yang Kami Kerjakan</h2>
+                <span class="font-mono font-bold text-soft-cyan text-sm tracking-wider uppercase">01 / Services</span>
+                <h2 class="font-display font-bold text-2xl md:text-4xl mt-2 text-text-main transition-colors duration-300">Apa yang Kami Kerjakan</h2>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
@@ -88,9 +89,9 @@
                     <div class="w-12 h-12 bg-soft-cyan/10 text-soft-cyan rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-globe"></i>
                     </div>
-                    <h3 class="font-display font-bold text-xl mb-4 text-text-main transition-colors duration-300">Web Dev</h3>
+                    <h3 class="font-display font-bold text-xl mb-4 text-text-main transition-colors duration-300">Web Development</h3>
                     <p class="text-text-muted mb-6 leading-relaxed transition-colors duration-300">
-                        Landing page, company profile, sistem internal, hingga e-commerce berkinerja tinggi.
+                        Landing page, company profile, portfolio, dan website informatif lainnya yang modern dan responsif.
                     </p>
                     <a href="#" class="text-soft-cyan font-mono text-sm hover:underline flex items-center">
                         [ Detail &rarr; ]
@@ -100,11 +101,11 @@
                 <!-- Card 2 -->
                 <div class="bg-bg-surface border border-border-main rounded-xl p-8 hover:border-soft-cyan transition-colors group shadow-sm hover:shadow-md">
                     <div class="w-12 h-12 bg-soft-cyan/10 text-soft-cyan rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <i class="fa-solid fa-laptop-code"></i>
                     </div>
-                    <h3 class="font-display font-bold text-xl mb-4 text-text-main transition-colors duration-300">App Dev</h3>
+                    <h3 class="font-display font-bold text-xl mb-4 text-text-main transition-colors duration-300">Web App</h3>
                     <p class="text-text-muted mb-6 leading-relaxed transition-colors duration-300">
-                        Mobile & web app, dari perancangan UI/UX yang intuitif sampai arsitektur backend yang scalable.
+                        Sistem informasi kompleks, dashboard, SaaS, dan aplikasi berbasis web dengan arsitektur scalable.
                     </p>
                     <a href="#" class="text-soft-cyan font-mono text-sm hover:underline flex items-center">
                         [ Detail &rarr; ]
@@ -114,11 +115,11 @@
                 <!-- Card 3 -->
                 <div class="bg-bg-surface border border-border-main rounded-xl p-8 hover:border-soft-cyan transition-colors group shadow-sm hover:shadow-md">
                     <div class="w-12 h-12 bg-soft-cyan/10 text-soft-cyan rounded-lg flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-code"></i>
+                        <i class="fa-solid fa-mobile-screen-button"></i>
                     </div>
-                    <h3 class="font-display font-bold text-xl mb-4 text-text-main transition-colors duration-300">Joki IT Task</h3>
+                    <h3 class="font-display font-bold text-xl mb-4 text-text-main transition-colors duration-300">Mobile App</h3>
                     <p class="text-text-muted mb-6 leading-relaxed transition-colors duration-300">
-                        Bantuan tugas kuliah, skripsi (bab teknis), laporan PKL, dan project akhir semester. Privasi aman.
+                        Aplikasi Android dan iOS yang intuitif, berkinerja tinggi, dan memberikan pengalaman pengguna terbaik.
                     </p>
                     <a href="#" class="text-soft-cyan font-mono text-sm hover:underline flex items-center">
                         [ Detail &rarr; ]
@@ -132,8 +133,8 @@
     <section id="cara-kerja" class="py-20 bg-bg-surface border-t border-border-main transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16">
-                <span class="font-mono text-soft-cyan text-sm tracking-wider uppercase">02 / Process</span>
-                <h2 class="font-display font-bold text-3xl md:text-4xl mt-2 text-text-main transition-colors duration-300">Cara Kerja Kami &mdash; Simpel & Transparan</h2>
+                <span class="font-mono font-bold text-soft-cyan text-sm tracking-wider uppercase">02 / Process</span>
+                <h2 class="font-display font-bold text-2xl md:text-4xl mt-2 text-text-main transition-colors duration-300">Cara Kerja Kami &mdash; Simpel & Transparan</h2>
             </div>
             
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
@@ -164,8 +165,8 @@
                 <!-- Step 4 -->
                 <div class="relative z-10">
                     <div class="w-12 h-12 bg-bg-primary border border-border-main text-text-main rounded-full flex items-center justify-center font-mono font-bold mb-6 mx-auto lg:mx-0 transition-colors duration-300">4</div>
-                    <h4 class="font-display font-bold text-lg mb-2 text-center lg:text-left text-text-main transition-colors duration-300">Serah Terima</h4>
-                    <p class="text-text-muted text-sm text-center lg:text-left leading-relaxed transition-colors duration-300">Proyek selesai, file dan source code lengkap kami serahkan.</p>
+                    <h4 class="font-display font-bold text-lg mb-2 text-center lg:text-left text-text-main transition-colors duration-300">Serah Terima & Garansi</h4>
+                    <p class="text-text-muted text-sm text-center lg:text-left leading-relaxed transition-colors duration-300">Proyek selesai, file dan source code lengkap diserahkan, dilanjutkan dengan garansi 1-2 bulan.</p>
                 </div>
             </div>
         </div>
@@ -175,8 +176,8 @@
     <section class="py-20 bg-bg-primary border-t border-border-main transition-colors duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16">
-                <span class="font-mono text-soft-cyan text-sm tracking-wider uppercase">03 / Feedback</span>
-                <h2 class="font-display font-bold text-3xl md:text-4xl mt-2 text-text-main transition-colors duration-300">Kata Klien Kami</h2>
+                <span class="font-mono font-bold text-soft-cyan text-sm tracking-wider uppercase">03 / Feedback</span>
+                <h2 class="font-display font-bold text-2xl md:text-4xl mt-2 text-text-main transition-colors duration-300">Kata Klien Kami</h2>
             </div>
             
             <div class="grid md:grid-cols-3 gap-6">
@@ -186,11 +187,11 @@
                         <div class="flex text-soft-cyan mb-4 text-sm">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-text-main leading-relaxed mb-6 transition-colors duration-300">"Proyeknya selesai tepat waktu dan hasilnya melebihi ekspektasi. Kodenya sangat rapi dan mudah dibaca."</p>
+                        <p class="text-text-main leading-relaxed mb-6 transition-colors duration-300">"Alhamdulillah kebantu banget sama aplikasi absensinya. Pake QR code ternyata simpel banget buat santri, datanya juga otomatis rapi jadi admin nggak pusing rekap manual lagi. Mantap!"</p>
                     </div>
                     <div class="border-t border-border-main pt-4 transition-colors duration-300">
-                        <p class="font-bold font-display text-sm text-text-main">Rizky A.</p>
-                        <p class="text-text-muted text-xs font-mono mt-1 transition-colors duration-300">Mahasiswa Teknik Informatika</p>
+                        <p class="font-bold font-display text-sm text-text-main">Pengurus Ponpes</p>
+                        <p class="text-text-muted text-xs font-mono mt-1 transition-colors duration-300">Muhammadiyah Luqman Al Hakim</p>
                     </div>
                 </div>
 
@@ -200,11 +201,11 @@
                         <div class="flex text-soft-cyan mb-4 text-sm">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-text-main leading-relaxed mb-6 transition-colors duration-300">"Website company profile kami jadi lebih modern dan cepat. Komunikasi tim SantriCode sangat transparan."</p>
+                        <p class="text-text-main leading-relaxed mb-6 transition-colors duration-300">"Suka banget sama hasilnya! Web UNI-RIDE kelihatan pro banget tapi tetep simpel dipakenya buat customer anjem sama jastip. Mana adminnya sabar banget lagi pas dimintain revisi hehe. Thank you!"</p>
                     </div>
                     <div class="border-t border-border-main pt-4 transition-colors duration-300">
-                        <p class="font-bold font-display text-sm text-text-main">Budi Santoso</p>
-                        <p class="text-text-muted text-xs font-mono mt-1 transition-colors duration-300">Founder Startup Lokal</p>
+                        <p class="font-bold font-display text-sm text-text-main">Adella Putri Anggita</p>
+                        <p class="text-text-muted text-xs font-mono mt-1 transition-colors duration-300">Owner UNI-RIDE</p>
                     </div>
                 </div>
 
@@ -214,11 +215,11 @@
                         <div class="flex text-soft-cyan mb-4 text-sm">
                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                         </div>
-                        <p class="text-text-main leading-relaxed mb-6 transition-colors duration-300">"Sangat tertolong untuk project akhir semester. Backend API yang dibuat sangat scalable dan terdokumentasi baik."</p>
+                        <p class="text-text-main leading-relaxed mb-6 transition-colors duration-300">"Gila sih ini ngebantu banget jualan frozen food aku. Customer tinggal klik-klik milih barang dari katalog, eh orderannya langsung masuk ke WA udah ditotalin harganya. Praktis banget asli!"</p>
                     </div>
                     <div class="border-t border-border-main pt-4 transition-colors duration-300">
-                        <p class="font-bold font-display text-sm text-text-main">Siti N.</p>
-                        <p class="text-text-muted text-xs font-mono mt-1 transition-colors duration-300">Mahasiswa Sistem Informasi</p>
+                        <p class="font-bold font-display text-sm text-text-main">Labibah Shafa Zahra</p>
+                        <p class="text-text-muted text-xs font-mono mt-1 transition-colors duration-300">Owner FROZENFOOD</p>
                     </div>
                 </div>
             </div>
@@ -228,22 +229,79 @@
     <!-- CTA Section -->
     <section id="kontak" class="py-24 relative overflow-hidden border-t border-border-main bg-gradient-to-br from-bg-primary via-bg-surface to-bg-primary transition-colors duration-300">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h2 class="font-display font-bold text-4xl md:text-5xl mb-6 text-text-main transition-colors duration-300">Punya proyek atau tugas yang perlu dikerjakan?</h2>
+            <h2 class="font-display font-bold text-3xl md:text-5xl mb-6 text-text-main transition-colors duration-300">Punya proyek atau tugas yang perlu dikerjakan?</h2>
             <p class="text-text-muted text-lg mb-10 max-w-2xl mx-auto transition-colors duration-300">Diskusikan kebutuhan Anda, dan biarkan kami yang mengeksekusinya menjadi produk digital nyata.</p>
-            <a href="https://wa.me/6283826314405" target="_blank" class="inline-flex items-center px-8 py-4 rounded-lg bg-soft-cyan hover:bg-soft-cyan/90 text-white font-bold text-lg transition-transform hover:-translate-y-1 shadow-[0_10px_30px_rgba(92,108,255,0.3)]">
+            <button onclick="openWaModal(event)" class="inline-flex items-center px-8 py-4 rounded-lg bg-soft-cyan hover:bg-soft-cyan/90 text-white font-bold text-lg transition-transform hover:-translate-y-1 shadow-[0_10px_30px_rgba(56,217,192,0.3)] cursor-pointer">
                 <i class="fa-brands fa-whatsapp text-2xl mr-3"></i> Hubungi Kami Sekarang
-            </a>
-            <p class="text-sm text-text-muted mt-6 font-mono transition-colors duration-300">Respon cepat via WhatsApp</p>
+            </button>
+            <p class="text-sm text-text-muted mt-6 font-mono transition-colors duration-300">Konsultasi gratis & respon cepat</p>
         </div>
     </section>
+
+    <!-- WhatsApp Order Modal -->
+    <div id="wa-modal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity opacity-0" id="wa-modal-backdrop" onclick="closeWaModal()"></div>
+        
+        <!-- Modal Content -->
+        <div class="bg-bg-surface border border-border-main rounded-2xl w-full max-w-md p-6 relative z-10 shadow-2xl transform scale-95 opacity-0 transition-all duration-300 flex flex-col max-h-[90vh]" id="wa-modal-content">
+            <!-- Close Button -->
+            <button onclick="closeWaModal()" class="absolute top-4 right-4 text-text-muted hover:text-text-main transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-bg-primary">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <!-- Header -->
+            <div class="mb-6">
+                <h3 class="font-display font-bold text-2xl text-text-main mb-2">Mulai Proyekmu</h3>
+                <p class="text-text-muted text-sm leading-relaxed">Ceritakan sedikit tentang kebutuhanmu agar kami bisa memberikan estimasi yang lebih akurat.</p>
+            </div>
+
+            <!-- Form -->
+            <form id="wa-order-form" onsubmit="submitWaForm(event)" class="flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar">
+                
+                <div>
+                    <label class="block text-sm font-medium text-text-main mb-1.5">Pilih Layanan</label>
+                    <select id="wa-service" required class="w-full bg-bg-primary border border-border-main text-text-main rounded-lg px-4 py-2.5 focus:outline-none focus:border-soft-cyan focus:ring-1 focus:ring-soft-cyan transition-colors cursor-pointer">
+                        <option value="" disabled selected>-- Pilih Layanan --</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Web App Development">Web App Development</option>
+                        <option value="Mobile App Development">Mobile App Development</option>
+                        <option value="Lainnya">Lainnya / Ingin Konsultasi Dulu</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-text-main mb-1.5">Estimasi Budget</label>
+                    <select id="wa-budget" required class="w-full bg-bg-primary border border-border-main text-text-main rounded-lg px-4 py-2.5 focus:outline-none focus:border-soft-cyan focus:ring-1 focus:ring-soft-cyan transition-colors cursor-pointer">
+                        <option value="" disabled selected>-- Pilih Range Budget --</option>
+                        <option value="Belum ada / Konsultasi">Masih ingin diskusi harga</option>
+                        <option value="< Rp 1.000.000">< Rp 1.000.000</option>
+                        <option value="Rp 1.000.000 - Rp 5.000.000">Rp 1.000.000 - Rp 5.000.000</option>
+                        <option value="> Rp 5.000.000">> Rp 5.000.000</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-text-main mb-1.5">Deskripsi Singkat (Opsional)</label>
+                    <textarea id="wa-notes" rows="3" class="w-full bg-bg-primary border border-border-main text-text-main rounded-lg px-4 py-2.5 focus:outline-none focus:border-soft-cyan focus:ring-1 focus:ring-soft-cyan transition-colors resize-none placeholder:text-text-muted/50" placeholder="Misal: Saya butuh web company profile dengan sistem booking..."></textarea>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="w-full bg-soft-cyan hover:bg-soft-cyan/90 text-white font-bold py-3 rounded-lg flex items-center justify-center transition-colors shadow-lg shadow-soft-cyan/20 cursor-pointer">
+                        <i class="fa-brands fa-whatsapp text-xl mr-2"></i> Lanjut ke WhatsApp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- Footer Container -->
     <div id="footer-container"></div>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/6283826314405" target="_blank" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center text-3xl shadow-[0_4px_15px_rgba(34,197,94,0.4)] hover:bg-green-600 hover:scale-110 transition-all z-50">
+    <button onclick="openWaModal(event)" class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center text-3xl shadow-[0_4px_15px_rgba(34,197,94,0.4)] hover:bg-green-600 hover:scale-110 transition-all z-50 cursor-pointer border-none outline-none">
         <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    </button>
 
     <script src="./src/main.js"></script>
 </body>

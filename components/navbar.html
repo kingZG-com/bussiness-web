@@ -2,30 +2,44 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="#" class="font-display font-bold text-2xl tracking-tight">SantriCode.<span class="text-soft-cyan">Labs.</span></a>
+                    <a href="#" class="font-display font-bold text-2xl tracking-tight">Santricode.<span class="text-soft-cyan">Labs</span></a>
                 </div>
                 <div class="hidden md:flex items-center space-x-6">
+                    <a href="#home" class="text-text-muted hover:text-soft-cyan transition-colors font-medium">Home</a>
                     <a href="#layanan" class="text-text-muted hover:text-soft-cyan transition-colors font-medium">Layanan</a>
                     <a href="#cara-kerja" class="text-text-muted hover:text-soft-cyan transition-colors font-medium">Cara Kerja</a>
                     <a href="#portofolio" class="text-text-muted hover:text-soft-cyan transition-colors font-medium">Portofolio</a>
                     
                     <!-- Theme Toggle -->
-                    <button id="theme-toggle" class="text-text-muted hover:text-soft-cyan focus:outline-none transition-colors ml-4 mr-2">
-                        <i id="theme-toggle-light-icon" class="fa-solid fa-sun text-lg hover:text-yellow-500 transition-colors"></i>
-                        <i id="theme-toggle-dark-icon" class="fa-solid fa-moon text-lg hidden text-soft-cyan"></i>
+                    <button id="theme-toggle-light" class="text-text-muted hover:text-yellow-500 focus:outline-none transition-all duration-300 ml-4 mr-2 cursor-pointer" title="Switch to Dark Mode">
+                        <i class="fa-solid fa-sun text-lg"></i>
+                    </button>
+                    <button id="theme-toggle-dark" class="text-soft-cyan hover:text-soft-cyan/70 focus:outline-none transition-all duration-300 ml-4 mr-2 hidden cursor-pointer" title="Switch to Light Mode">
+                        <i class="fa-solid fa-moon text-lg"></i>
                     </button>
 
-                    <a href="#kontak" class="px-5 py-2.5 rounded-full bg-soft-cyan hover:bg-soft-cyan/90 text-white font-medium transition-colors shadow-lg shadow-soft-cyan/20 ml-4">Konsultasi Gratis &rarr;</a>
                 </div>
                 <div class="md:hidden flex items-center space-x-4">
-                    <button id="theme-toggle-mobile" class="text-text-muted hover:text-text-main focus:outline-none mr-2">
-                        <i id="theme-toggle-light-icon-mobile" class="fa-solid fa-sun text-xl hover:text-yellow-500 transition-colors"></i>
-                        <i id="theme-toggle-dark-icon-mobile" class="fa-solid fa-moon text-xl hidden text-soft-cyan"></i>
+                    <button id="theme-toggle-light-mobile" class="text-text-muted hover:text-yellow-500 focus:outline-none transition-all duration-300 mr-2 cursor-pointer" title="Switch to Dark Mode">
+                        <i class="fa-solid fa-sun text-xl"></i>
                     </button>
-                    <button class="text-text-muted hover:text-text-main focus:outline-none">
+                    <button id="theme-toggle-dark-mobile" class="text-soft-cyan hover:text-soft-cyan/70 focus:outline-none transition-all duration-300 mr-2 hidden cursor-pointer" title="Switch to Light Mode">
+                        <i class="fa-solid fa-moon text-xl"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-text-muted hover:text-text-main focus:outline-none cursor-pointer">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-bg-surface border-t border-border-main transition-colors duration-300">
+            <div class="px-4 pt-2 pb-6 flex flex-col space-y-4">
+                <a href="#home" class="mobile-menu-link text-text-main hover:text-soft-cyan font-medium text-lg pt-4">Home</a>
+                <a href="#layanan" class="mobile-menu-link text-text-main hover:text-soft-cyan font-medium text-lg">Layanan</a>
+                <a href="#cara-kerja" class="mobile-menu-link text-text-main hover:text-soft-cyan font-medium text-lg">Cara Kerja</a>
+                <a href="#portofolio" class="mobile-menu-link text-text-main hover:text-soft-cyan font-medium text-lg">Portofolio</a>
             </div>
         </div>
     </nav>

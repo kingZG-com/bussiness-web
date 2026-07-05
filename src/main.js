@@ -9,58 +9,84 @@
                 
                 // Initialize theme toggle AFTER navbar is loaded
                 initThemeToggle();
+                initMobileMenu();
             } catch (error) {
                 console.error('Error loading components. Make sure to run this via a local server (e.g. Live Server).', error);
             }
         }
 
+        // --- Mobile Menu Logic ---
+        function initMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (!mobileMenuBtn || !mobileMenu) return;
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close menu when a link is clicked
+            const mobileLinks = document.querySelectorAll('.mobile-menu-link');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+
         // --- Theme Toggle Logic ---
         function initThemeToggle() {
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-            
-            const themeToggleBtnMobile = document.getElementById('theme-toggle-mobile');
-            const themeToggleDarkIconMobile = document.getElementById('theme-toggle-dark-icon-mobile');
-            const themeToggleLightIconMobile = document.getElementById('theme-toggle-light-icon-mobile');
+            // Desktop buttons
+            const sunBtn = document.getElementById('theme-toggle-light');
+            const moonBtn = document.getElementById('theme-toggle-dark');
+            // Mobile buttons
+            const sunBtnMobile = document.getElementById('theme-toggle-light-mobile');
+            const moonBtnMobile = document.getElementById('theme-toggle-dark-mobile');
 
-            if (!themeToggleBtn) return; // fail-safe
+            if (!sunBtn) return; // fail-safe
 
-            function setIcon(theme) {
-                if (theme === 'dark') {
-                    themeToggleLightIcon.classList.add('hidden');
-                    themeToggleDarkIcon.classList.remove('hidden');
-                    themeToggleLightIconMobile.classList.add('hidden');
-                    themeToggleDarkIconMobile.classList.remove('hidden');
-                } else {
-                    themeToggleDarkIcon.classList.add('hidden');
-                    themeToggleLightIcon.classList.remove('hidden');
-                    themeToggleDarkIconMobile.classList.add('hidden');
-                    themeToggleLightIconMobile.classList.remove('hidden');
-                }
+            function showSun() {
+                sunBtn.classList.remove('hidden');
+                moonBtn.classList.add('hidden');
+                sunBtnMobile.classList.remove('hidden');
+                moonBtnMobile.classList.add('hidden');
             }
 
+            function showMoon() {
+                sunBtn.classList.add('hidden');
+                moonBtn.classList.remove('hidden');
+                sunBtnMobile.classList.add('hidden');
+                moonBtnMobile.classList.remove('hidden');
+            }
+
+            // Set initial icon based on current theme
             let currentTheme = localStorage.getItem('color-theme');
             if (currentTheme === 'dark' || (!currentTheme && document.documentElement.classList.contains('dark'))) {
-                setIcon('dark');
+                showMoon();
             } else {
-                setIcon('light');
+                showSun();
             }
 
-            function toggleTheme() {
-                if (document.documentElement.classList.contains('dark')) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('color-theme', 'light');
-                    setIcon('light');
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('color-theme', 'dark');
-                    setIcon('dark');
-                }
+            function switchToDark() {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+                showMoon();
             }
 
-            themeToggleBtn.addEventListener('click', toggleTheme);
-            themeToggleBtnMobile.addEventListener('click', toggleTheme);
+            function switchToLight() {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+                showSun();
+            }
+
+            // Sun click → switch to dark mode
+            sunBtn.addEventListener('click', switchToDark);
+            sunBtnMobile.addEventListener('click', switchToDark);
+
+            // Moon click → switch to light mode
+            moonBtn.addEventListener('click', switchToLight);
+            moonBtnMobile.addEventListener('click', switchToLight);
         }
 
         // Run component loader
@@ -157,4 +183,67 @@
             sr.reveal('#kontak h2', { origin: 'bottom', distance: '30px' });
             sr.reveal('#kontak p', { origin: 'bottom', distance: '30px', delay: 150 });
             sr.reveal('#kontak a', { origin: 'bottom', scale: 0.9, delay: 300 });
+            sr.reveal('#kontak button', { origin: 'bottom', scale: 0.9, delay: 300 });
         });
+
+        // --- WhatsApp Modal Logic ---
+        function openWaModal(e) {
+            if(e) e.preventDefault();
+            const modal = document.getElementById('wa-modal');
+            const backdrop = document.getElementById('wa-modal-backdrop');
+            const content = document.getElementById('wa-modal-content');
+            
+            modal.classList.remove('hidden');
+            
+            // Trigger reflow for transition
+            void modal.offsetWidth;
+            
+            backdrop.classList.remove('opacity-0');
+            backdrop.classList.add('opacity-100');
+            
+            content.classList.remove('opacity-0', 'scale-95');
+            content.classList.add('opacity-100', 'scale-100');
+        }
+
+        function closeWaModal() {
+            const modal = document.getElementById('wa-modal');
+            const backdrop = document.getElementById('wa-modal-backdrop');
+            const content = document.getElementById('wa-modal-content');
+            
+            backdrop.classList.remove('opacity-100');
+            backdrop.classList.add('opacity-0');
+            
+            content.classList.remove('opacity-100', 'scale-100');
+            content.classList.add('opacity-0', 'scale-95');
+            
+            // Wait for transition to finish before hiding
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        function submitWaForm(e) {
+            e.preventDefault();
+            
+            const service = document.getElementById('wa-service').value;
+            const budget = document.getElementById('wa-budget').value;
+            const notes = document.getElementById('wa-notes').value.trim();
+            
+            // Format WhatsApp Message
+            let message = `Halo SantriCode, saya tertarik untuk diskusi terkait project digital.\n\n`;
+            message += `*Layanan:* ${service}\n`;
+            message += `*Estimasi Budget:* ${budget}\n`;
+            
+            if(notes) {
+                message += `*Deskripsi/Catatan:* ${notes}\n`;
+            }
+            
+            message += `\nMohon info lebih lanjut. Terima kasih!`;
+            
+            const waNumber = '6283826314405';
+            const encodedMessage = encodeURIComponent(message);
+            const waUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+            
+            window.open(waUrl, '_blank');
+            closeWaModal();
+        }
